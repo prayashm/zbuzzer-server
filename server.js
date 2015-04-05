@@ -6,8 +6,8 @@ var express = require('express');
 var webapp = express();
 
 webapp.use(express.static(__dirname + '/public'));
-webapp.listen(8080, function(){
-	console.log("listening on *:8080");
+webapp.listen(8000, function(){
+	console.log("listening on *:8000");
 });
 
 var dash = io.of("/dash");
