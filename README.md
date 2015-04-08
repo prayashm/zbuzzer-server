@@ -1,4 +1,4 @@
-# zBuzzer
+# zBuzzer Server
 
 A multiuser buzzer system for smartphones using websockets.
 
@@ -16,20 +16,21 @@ You need node.js
 ```sh
 $ sudo apt-get install nodejs
 ```
-Install Express and Socket.io packages
+Clone and install npm dependancies
 ```sh
-$ npm install express
-$ npm install socket.io
 $ git clone https://github.com/prayashm/zbuzzer-server.git
 $ cd zbuzzer-server
+$ npm install
 ```
 Start the server
 ```sh
-$ node server.js
+$ npm start
 ```
 
 ####Client
-Install the apk from app/app-release.apk on your phone
+Android Client is at [zbuzzer-android-client](https://github.com/prayashm/zbuzzer-android-client)
+Install the apk from [app/app-release.apk] on your phone
+
 
 ### Todo's
 
