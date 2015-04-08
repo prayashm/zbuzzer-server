@@ -84,7 +84,7 @@
           }
         });
         socket.on("connect", function(socket){
-          console.log("Websocktet connected!");
+          console.log("Websocket connected!");
         });
         socket.on("joined", function(usr,game){
           $("ul#usrconnected").append('<li class="active"><a>'+usr+'</a></li>');
