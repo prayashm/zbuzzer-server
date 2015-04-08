@@ -1,14 +1,14 @@
-var app = require('express');
-var http = require('http').Server(app);
+var express = require('express');
+var http = require('http');
+var app = express();
 var io = require('socket.io')(http);
 
-var express = require('express');
-var webapp = express();
+app.use(express.static(__dirname + '/'));
 
-webapp.use(express.static(__dirname + '/public'));
-webapp.listen(8000, function(){
-	console.log("listening on *:8000");
-});
+var server = http.createServer(app);
+server.listen(3000);
+
+console.log("listening on *:3000");
 
 var dash = io.of("/dash");
 dash.on("connection", function(socket){
@@ -22,7 +22,6 @@ dash.on("connection", function(socket){
 		console.log(gamename+" reset!");
 	});
 });
-
 
 io.on('connection', function(socket){
 	console.log("Device connected");
@@ -44,9 +43,4 @@ io.on('connection', function(socket){
 	socket.on('disconnect', function(){
 		console.log('Device left!');
 	});
-
-});
-
-http.listen(5000, function(){
-	console.log('listening on *:5000');
 });
