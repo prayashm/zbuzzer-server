@@ -1,14 +1,14 @@
-var app = require('express');
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var app = require('express')();
+var express = require("express");
+var server = require('http').Server(app);
+var io = require('socket.io')(server)
 var port = process.env.PORT || 5000;
-var express = require('express');
-var webapp = express();
 
-webapp.use(express.static(__dirname + '/public'));
-webapp.listen(port, function(){
+app.listen(port, function(){
 	console.log("listening on *:"+port);
 });
+
+app.use(express.static(__dirname + "/public"));
 
 var dash = io.of("/dash");
 dash.on("connection", function(socket){
@@ -43,8 +43,4 @@ io.on('connection', function(socket){
 	socket.on('disconnect', function(){
 		console.log('Device left!');
 	});
-});
-
-http.listen(3000, function(){
-	console.log('listening on *:'+3000);
 });
