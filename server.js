@@ -1,12 +1,12 @@
-var app = require('express')();
 var express = require("express");
+var app = express();
 var server = require('http').Server(app);
-var io = require('socket.io')(server)
 var port = process.env.PORT || 5000;
-
-app.listen(port, function(){
+var httpserver = app.listen(port, function(){
 	console.log("listening on *:"+port);
 });
+
+var io = require('socket.io').listen(httpserver);
 
 app.use(express.static(__dirname + "/public"));
 
